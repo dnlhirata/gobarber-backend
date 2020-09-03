@@ -9,9 +9,14 @@ import { uuid } from 'uuidv4';
 class AppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
 
-  public async findByDate(date: Date): Promise<Appointment | undefined> {
-    const appointment = this.appointments.find(appointment =>
-      isEqual(appointment.date, date),
+  public async findByDate(
+    date: Date,
+    provider_id: string,
+  ): Promise<Appointment | undefined> {
+    const appointment = this.appointments.find(
+      appointment =>
+        isEqual(appointment.date, date) &&
+        appointment.provider_id === provider_id,
     );
 
     return appointment;
@@ -41,9 +46,9 @@ class AppointmentsRepository implements IAppointmentsRepository {
     const appointments = this.appointments.filter(
       appointment =>
         appointment.provider_id === provider_id &&
-        getDate(appointment.date) === day &&
-        getMonth(appointment.date) + 1 === month &&
-        getYear(appointment.date) === year,
+        getDate(appointment.date) === Number(day) &&
+        getMonth(appointment.date) + 1 === Number(month) &&
+        getYear(appointment.date) === Number(year),
     );
 
     return appointments;
