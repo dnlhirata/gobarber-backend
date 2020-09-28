@@ -114,4 +114,7 @@ dist
 #ormconfig
 ormconfig.json
 
+# Docker Compose
+docker-compose.override.yml
+
 # End of https://www.toptal.com/developers/gitignore/api/node
