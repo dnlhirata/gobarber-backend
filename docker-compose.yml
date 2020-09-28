@@ -7,7 +7,7 @@ services:
     environment:
       - POSTGRESQL_USERNAME=postgres
       - POSTGRESQL_PASSWORD=docker
-      - POSTGRESQL_DATABASE=gobarber
+      - POSTGRESQL_DATABASE=gostack_gobarber
     ports:
       - '5433:5432'
 
@@ -15,7 +15,7 @@ services:
     image: bitnami/mongodb:latest
     restart: unless-stopped
     environment:
-      - MONGODB_USERNAME=gobarber
+      - MONGODB_USERNAME=
       - MONGODB_PASSWORD=
       - MONGODB_DATABASE=gobarber
       - ALLOW_EMPTY_PASSWORD=yes
