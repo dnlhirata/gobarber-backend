@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=gostack_gobarber
+    ports:
+      - '5433:5432'
+
+  mongo:
+    image: bitnami/mongodb:latest
+    restart: unless-stopped
+    environment:
+      - MONGODB_USERNAME=gobarber
+      - POSTGRESQL_PASSWORD=
+      - POSTGRESQL_DATABASE=gobarber
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: bitnami/redis:latest
+    restart: unless-stopped
+    environment:
+      - REDIS_USERNAME=
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
